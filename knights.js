@@ -5,7 +5,7 @@ function knightMoves(start, target){
     ];
 
     const queue = [[start, [start]]];
-    const visited = new set();
+    const visited = new Set();
     visited.add(start.toString());
 
     function isWithinBoard(position){
@@ -20,14 +20,16 @@ function knightMoves(start, target){
             path.forEach(pos => console.log(pos));
             return path;
         }
-    }
 
-    for(const move of moves){
-        const newPosition = [currentPos[0] + move[0], currentPos[1] + move[1]];
-
-        if(isWithinBoard(newPosition) && !visited.has(newPosition.toString())){
-            visited.add(newPosition.toString());
-            queue.push([newPosition, path.concat([newPosition])]);
+        for(const move of moves){
+            const newPosition = [currentPos[0] + move[0], currentPos[1] + move[1]];
+    
+            if(isWithinBoard(newPosition) && !visited.has(newPosition.toString())){
+                visited.add(newPosition.toString());
+                queue.push([newPosition, path.concat([newPosition])]);
+            }
         }
     }
+
+    
 }
